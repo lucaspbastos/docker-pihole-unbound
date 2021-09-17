@@ -1,8 +1,13 @@
-# Pi-Hole + Unbound - 1 Container
+# Pi-Hole + Unbound in just 1 Container
 
 ## Description
 
-This Docker deployment runs both Pi-Hole and Unbound in a single container. 
+This is a fork of [Chris Crowe's docker-pihole-unbound Docker deployment](https://github.com/chriscrowe/docker-pihole-unbound) that runs both Pi-Hole and Unbound in a single container. Some changes in this fork include:
+- Refactoring project to a single container, removing legacy two-container option
+- Enabling of Pi-Hole and Unbound's IPv6 features by default
+- Always grabbing the latest Pi-Hole Docker image
+- Downloading root.hints file for Unbound
+- Default port opening for Unbound for testing (port 5335)
 
 The base image for the container is the [official Pi-Hole container](https://hub.docker.com/r/pihole/pihole), with an extra build step added to install the Unbound resolver directly into to the container based on [instructions provided directly by the Pi-Hole team](https://docs.pi-hole.net/guides/unbound/).
 
@@ -30,11 +35,11 @@ Example `.env` file in the same directory as your `docker-compose.yaml` file:
 ```
 ServerIP=192.168.1.10
 TZ=America/Los_Angeles
-WEBPASSWORD=QWERTY123456asdfASDF
+WEBPASSWORD={desired password here}
 REV_SERVER=true
 REV_SERVER_DOMAIN=local
 REV_SERVER_TARGET=192.168.1.1
-REV_SERVER_CIDR=192.168.0.0/16
+REV_SERVER_CIDR=192.168.1.0/24
 HOSTNAME=pihole
 DOMAIN_NAME=pihole.local
 ```

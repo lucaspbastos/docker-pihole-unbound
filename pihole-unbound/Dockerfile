@@ -1,5 +1,6 @@
-FROM pihole/pihole:v5.8.1
+FROM pihole/pihole:latest
 RUN apt update && apt install -y unbound
+RUN wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
 
 COPY lighttpd-external.conf /etc/lighttpd/external.conf 
 COPY unbound-pihole.conf /etc/unbound/unbound.conf.d/pi-hole.conf

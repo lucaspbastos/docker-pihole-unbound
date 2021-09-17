@@ -14,21 +14,21 @@ services:
       - 443:443/tcp
       - 53:53/tcp
       - 53:53/udp
-      - 67:67/udp
+      # - 67:67/udp # Uncomment if using DHCP
       - 80:80/tcp
       - 5335:5335/tcp # Comment to disable unbound access on local server
       # - 22/tcp # Uncomment to enable SSH
     environment:
       ServerIP: ${ServerIP}
-      TZ: ${TZ}
+      IPv6: "true" # Comment to disable IPv6
+      ServerIPv6: 'Server IPv6 address' # Comment to disable IPv6
       WEBPASSWORD: ${WEBPASSWORD}
       REV_SERVER: ${REV_SERVER}
       REV_SERVER_TARGET: ${REV_SERVER_TARGET}
       REV_SERVER_DOMAIN: ${REV_SERVER_DOMAIN}
       REV_SERVER_CIDR: ${REV_SERVER_CIDR}
-      DNS1: 127.0.0.1#5335 # Hardcoded to our Unbound server
-      DNS2: 127.0.0.1#5335 # Hardcoded to our Unbound server
-      DNSSEC: "true" # Enable DNSSEC
+      PIHOLE_DNS_: 127.0.0.1#5335;;::1#5335 # Comment after '127.0.0.1#5335' to remove IPv6 Unbound Address
+      DNSSEC: "true"
     volumes:
       - etc_pihole-unbound:/etc/pihole:rw
       - etc_pihole_dnsmasq-unbound:/etc/dnsmasq.d:rw
