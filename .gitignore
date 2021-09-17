@@ -1,3 +1,5 @@
 .env
 .DS_Store
 .idea
+pihole-unbound/build_and_push.sh
+pihole-unbound/VERSION

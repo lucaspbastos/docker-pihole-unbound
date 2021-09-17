@@ -1,4 +1,5 @@
 FROM pihole/pihole:latest
+LABEL org.opencontainers.image.source="https://github.com/lucaspbastos/docker-pihole-unbound"
 RUN apt update && apt install -y unbound
 RUN wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unbound/root.hints
 
