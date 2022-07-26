@@ -4,6 +4,7 @@ volumes:
   etc_pihole-unbound:
   etc_pihole_dnsmasq-unbound:
 
+
 services:
   pihole:
     container_name: pihole
@@ -19,9 +20,9 @@ services:
       - 5335:5335/tcp # Comment to disable unbound access on local server
       # - 22/tcp # Uncomment to enable SSH
     environment:
-      ServerIP: ${ServerIP}
+      FTLCONF_REPLY_ADDR4: ${FTLCONF_REPLY_ADDR4}
       IPv6: "true" # Comment to disable IPv6
-      ServerIPv6: ${ServerIPv6} # Comment to disable IPv6
+      FTLCONF_REPLY_ADDR6: ${FTLCONF_REPLY_ADDR6} # Comment to disable IPv6
       WEBPASSWORD: ${WEBPASSWORD}
       REV_SERVER: ${REV_SERVER}
       REV_SERVER_TARGET: ${REV_SERVER_TARGET}
