@@ -1,4 +1,3 @@
 .env
 .DS_Store
 pihole-unbound/build_and_push.sh
-pihole-unbound/VERSION
