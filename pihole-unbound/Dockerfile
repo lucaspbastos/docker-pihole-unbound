@@ -6,7 +6,7 @@ RUN wget https://www.internic.net/domain/named.root -qO- | sudo tee /var/lib/unb
 COPY lighttpd-external.conf /etc/lighttpd/external.conf 
 COPY unbound-pihole.conf /etc/unbound/unbound.conf.d/pi-hole.conf
 COPY 99-edns.conf /etc/dnsmasq.d/99-edns.conf
-COPY start_unbound_and_s6_init.sh start_unbound_and_s6_init.sh
+RUN mkdir /etc/services.d/unbound
+COPY unbound-run /etc/services.d/unbound/run
 
-RUN chmod +x start_unbound_and_s6_init.sh
-ENTRYPOINT ./start_unbound_and_s6_init.sh
+ENTRYPOINT ./s6-init
