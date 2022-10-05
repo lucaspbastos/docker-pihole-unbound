@@ -1,5 +1,7 @@
 # Pi-Hole + Unbound in just 1 Container
 
+*This fork is no longer being maintained and has been archived. Please consider using the original repo or fork to customize for your own needs.*
+
 ## Description
 
 This is a fork of [Chris Crowe's docker-pihole-unbound Docker deployment](https://github.com/chriscrowe/docker-pihole-unbound) that runs both Pi-Hole and Unbound in a single container. Some changes in this fork include:
